@@ -1,4 +1,3 @@
-package com.example.myapplication
 fun main() {
     var cal = Calculator()
     println("식과 연산자를 차례대로 입력해주세요")
@@ -13,19 +12,19 @@ fun main() {
 
 
     if(operator == "+") {
-       println(cal.allcal(AddOperation(),num1,num2))
+       println(cal.caAdd(AddOperation(),num1,num2))
     } else if(operator == "-") {
         // 뺄셈일 때
-        println(cal.allcal(MinusOperation(),num1,num2))
+        println(cal.caMinus(MinusOperation(),num1,num2))
     } else if(operator == "*") {
         // 곱셈일 때
-        println(cal.allcal(MultipleOperation(),num1,num2))
+        println(cal.caMultiple(MultipleOperation(),num1,num2))
     } else if(operator == "/") {
         // 나눗셈일 때
-        println(cal.allcal(DivideOperation(),num1, num2))
+        println(cal.caDivide(DivideOperation(),num1, num2))
     } else if (operator == "%"){
         //나머지 연산자일 때
-        println(cal.allcal(ReminderOperation(),num1, num2))
+        println(cal.caReminder(ReminderOperation(),num1, num2))
     } else {
         // 잘못된 연산자 일 때
         println("연산자가 잘못되어 실행되지 않습니다")
@@ -33,63 +32,58 @@ fun main() {
     }
 
 }
+
 class Calculator {
-    fun allcal (caAddOperation: AbstractOperation, num1:Int, num2: Int): Double {
-        return caAddOperation.operation(num1,num2)
+
+    fun caAdd (caAddOperation: AddOperation,num1:Int, num2: Int): Int {
+        return caAddOperation.plus(num1,num2)
     }
-//    fun caAdd (caAddOperation: AddOperation, num1:Int, num2: Int): Double {
-//        return caAddOperation.(num1,num2)
-//    }
-//
-//    fun caMinus(caMinusOperation: MinusOperation, num1: Int, num2: Int): Double{
-//        return caMinusOperation.minus(num1,num2)
-//    }
-//
-//    fun caMultiple(caMultipleOperation: MultipleOperation, num1: Int, num2: Int): Double{
-//        return caMultipleOperation.multiple(num1,num2)
-//    }
-//
-//    fun caDivide(caDivideOperation: DivideOperation, num1: Int, num2: Int): Double{
-//        return caDivideOperation.divide(num1,num2)
-//    }
-//
-//    fun caReminder(caReminderOperation: ReminderOperation, num1: Int, num2: Int): Double{
-//        return caReminderOperation.remainder(num1,num2)
-//    }
+
+    fun caMinus(caMinusOperation: MinusOperation, num1: Int, num2: Int): Int{
+        return caMinusOperation.minus(num1,num2)
+    }
+
+    fun caMultiple(caMultipleOperation: MultipleOperation, num1: Int, num2: Int): Int{
+        return caMultipleOperation.multiple(num1,num2)
+    }
+
+    fun caDivide(caDivideOperation: DivideOperation, num1: Int, num2: Int): Int{
+        return caDivideOperation.divide(num1,num2)
+    }
+
+    fun caReminder(caReminderOperation: ReminderOperation, num1: Int, num2: Int): Int{
+        return caReminderOperation.remainder(num1,num2)
+    }
 
 }
 
 
-class AddOperation : AbstractOperation(){
-    override fun operation(num1: Int, num2: Int): Double {
-        return (num1 + num2).toDouble()
+class AddOperation {
+    fun plus(num1: Int, num2: Int): Int {
+        return (num1 + num2)
     }
 }
 
-class MinusOperation: AbstractOperation(){
-    override fun operation(num1: Int, num2: Int): Double {
-        return (num1 - num2).toDouble()
+class MinusOperation {
+    fun minus(num1: Int, num2: Int): Int {
+        return (num1 - num2)
     }
 }
 
-class MultipleOperation: AbstractOperation(){
-    override fun operation(num1: Int, num2: Int): Double {
-        return (num1 * num2).toDouble()
+class MultipleOperation {
+    fun multiple(num1: Int, num2: Int): Int {
+        return (num1 * num2)
     }
 }
 
-class DivideOperation : AbstractOperation(){
-    override fun operation(num1: Int, num2: Int): Double {
-        return (num1 / num2).toDouble()
+class DivideOperation {
+    fun divide(num1: Int, num2: Int): Int {
+        return (num1 / num2)
     }
 }
 
-class ReminderOperation : AbstractOperation(){
-    override fun operation(num1: Int,num2: Int): Double {
-        return (num1 % num2).toDouble()
+class ReminderOperation {
+    fun remainder(num1: Int,num2: Int): Int {
+        return (num1 % num2)
     }
-}
-
-abstract class AbstractOperation {
-    abstract fun operation(num1: Int,num2: Int):Double
 }
