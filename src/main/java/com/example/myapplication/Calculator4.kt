@@ -13,7 +13,7 @@ fun main() {
 
 
     if(operator == "+") {
-       println(cal.allcal(AddOperation(),num1,num2))
+        println(cal.allcal(AddOperation(),num1,num2))
     } else if(operator == "-") {
         // 뺄셈일 때
         println(cal.allcal(MinusOperation(),num1,num2))
@@ -92,4 +92,3 @@ class ReminderOperation : AbstractOperation(){
 
 abstract class AbstractOperation {
     abstract fun operation(num1: Int,num2: Int):Double
-}
